@@ -6,3 +6,27 @@ I simulated these two different models and collect the following statistics for 
 - Turnaround time of each order
 - Maximum length of each queue
 
+# Input/Output File Format
+The input file has the following format:
+- First line is number of cashiers (N) which is always divisible by 3.
+- Second line is the number of orders (M).
+- Following M lines contain information about orders. There are 4 variables separated with space. They are:
+  - Arrival Time: The time when customer enters to the coffee shop. (in seconds)
+  - Order Time: The time required to give coffee order. (in seconds)
+  - Brew Time: The time required to make coffee. (in seconds)
+  - Price of Order: Price of the coffee.
+
+The output file has the following format:
+- First line is the total running time of the coffee shop. (in seconds)
+- Next line is the maximum length of the cashier queue.
+- If the coffee shop has one barista queue, next line is maximum length of this queue.
+- If the coffee shop has N/3 barista queues, next N/3 lines are max- imum lengths of each barista queue.
+- Next N lines are the utilization of the cashiers. 5. Next N/3 lines are the utilization of the baristas. 6. Next M lines are turnaround times of orders.
+I print these values for first and second models, respectively. 
+
+# Implementation Details
+- Whenever a cashier or barista finishes his/her job, he/she immediately fetches an order waiting in corresponding queue. If the queue is empty, he/she goes idle.
+- If more than one cashier is available, the cashier with smallest ID takes the order. For example, if cashier1 and cashier3 are available at the same time, the next order will be taken by cashier1. This principle is same with baristas, too.
+- Unit Utilization = Busy Time of the Unit / Total Running Time of The Coffee Shop
+- Turnaround Time = Time when the coffee is done−Arrival time of the customer
+- Total Running Time = Time when all coffee orders are done
